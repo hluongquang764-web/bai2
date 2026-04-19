@@ -171,6 +171,8 @@ Click vào file cần xóa → nhấn nút **Xóa** (thùng rác) → xác nhậ
 Click vào file → nhấn nút **Chia sẻ** → copy link chia sẻ để gửi cho người khác.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6da10b88-2d27-4afd-8beb-2d6e623ad719" />
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d8aa8b18-43ca-454e-bea2-80f552f88ebc" />
+
 # Cấu trúc thư mục
 
 ```
