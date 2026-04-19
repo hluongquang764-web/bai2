@@ -137,32 +137,40 @@ Người dùng tự đăng ký tại `https://luongquangha.io.vn/files`
 ## 10.1. Upload file
 Nhấn nút **Upload** (mũi tên lên) ở góc trên phải → chọn file từ máy tính → file sẽ được upload lên server.
 
-![Upload file](images/10.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/50eefb68-b6df-4b95-8516-eadab1773311" />
+
 
 ## 10.2. Tạo thư mục mới
 Nhấn **Thư mục mới** ở menu bên trái → nhập tên thư mục → nhấn OK.
 
-![Tạo thư mục](images/11.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/942f13fb-7f5f-4184-b7fe-11ef8a1576b0" />
+
 
 ## 10.3. Tạo file mới
 Nhấn **Tập tin mới** ở menu bên trái → nhập tên file → nhấn OK → có thể chỉnh sửa nội dung trực tiếp.
 
-![Tạo file mới](images/12.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/90d06c93-3ece-4b13-9b2b-1a64000b6083" />
+
+<img width="1918" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce6f5455-080d-4246-8684-4aa627029d24" />
+
+<img width="1920" height="1077" alt="image" src="https://github.com/user-attachments/assets/9987fbbc-2b1f-4b85-9a02-b6d45be7e734" />
+
 
 ## 10.4. Download file
 Click vào file cần tải → nhấn nút **Download** (mũi tên xuống) ở góc trên phải.
 
-![Download file](images/13.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1a4a2128-c12d-4b9f-8bc6-8d21224e484d" />
 
 ## 10.5. Xóa file
 Click vào file cần xóa → nhấn nút **Xóa** (thùng rác) → xác nhận.
 
-![Xóa file](images/14.png)
+<img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/8aa8e682-f6fc-4418-b396-5af12d54f27a" />
+
 
 ## 10.6. Chia sẻ file
 Click vào file → nhấn nút **Chia sẻ** → copy link chia sẻ để gửi cho người khác.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6da10b88-2d27-4afd-8beb-2d6e623ad719" />
 
-![Chia sẻ file](images/15.png)
 # Cấu trúc thư mục
 
 ```
