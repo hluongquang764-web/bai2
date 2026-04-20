@@ -173,6 +173,52 @@ Click vào file → nhấn nút **Chia sẻ** → copy link chia sẻ để gử
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d8aa8b18-43ca-454e-bea2-80f552f88ebc" />
 
+
+---
+
+# 11. Node-RED kết nối File Browser API
+
+Node-RED đóng vai trò cầu nối, gọi API của File Browser để lấy danh sách file, sau đó trả về cho trang web hiển thị.
+
+## Flow Node-RED: [GET] /api/files-list
+
+Gồm 4 node được nối theo thứ tự:
+- **http in** (GET /api/files-list) → nhận request từ trang web
+- **http request** (GET http://myfilebrowser:80/api/resources/) → gọi API File Browser kèm token xác thực
+- **function** → xử lý JSON, lọc ra tên file, kích thước, loại, ngày sửa
+- **http response** → trả kết quả về cho trang web
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/717f5708-60e2-4c00-bd92-bf6123ad6633" />
+
+Kết quả API trả về:
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2b4f7ef3-14eb-4d9c-a9a5-c06520a16b6e" />
+
+
+---
+
+# 12. Trang web hiển thị danh sách file
+
+Trang web tại `https://luongquangha.io.vn` tự động gọi `/api/files-list` khi tải và hiển thị danh sách file theo thời gian thực.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5594e4b0-7d80-4ac0-8a7d-16eca55ab9b6" />
+
+
+---
+
+# 13. Phan quyen truy cap
+
+File Browser ho tro phan quyen chi tiet cho tung user:
+
+| User | Quan tri vien | Pham vi | Quyen |
+|------|------|------|------|
+| admin | Co | Toan bo (.) | Toan quyen |
+| nguyentienduc | Khong | /h | Chi tai xuong |
+| luongha | Khong | /thumuc | Chi tai xuong |
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2782d6fb-70c0-42a6-8836-98c0a73e8ce7" />
+
+
 # Cấu trúc thư mục
 
 ```
