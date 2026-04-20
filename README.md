@@ -279,6 +279,8 @@ Click vào file → nhấn nút **Chia sẻ** → copy link chia sẻ để gử
 ---
 
 # Cau truc thu muc
+
+```
 myapp/
 ├── docker-compose.yml
 ├── nginx/
@@ -288,8 +290,9 @@ myapp/
 ├── nodered/
 │   └── settings.js
 └── filebrowser/
-├── data/          ← noi luu file upload cua nguoi dung
-└── filebrowser.db ← database chua tai khoan va cai dat
+    ├── data/
+    └── filebrowser.db
+```
 
 Giai thich:
 - `docker-compose.yml` — khai bao 4 service: mynginx, mynodered, mycloudflared, myfilebrowser
