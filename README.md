@@ -4,7 +4,41 @@
 **MSSV:** K225480106010  
 **Lớp:** 58KTP  
 **File Browser:** https://luongquangha.io.vn/files  
+# Bai toan
 
+Nhom sinh vien can mot he thong de:
+- **Chia se tai lieu** hoc tap voi nhau qua internet
+- **Quan ly file** tren server ma khong can SSH hay dung lenh
+- **Hien thi danh sach tai lieu** tren trang web de moi nguoi xem
+- **Phan quyen truy cap** theo tung thanh vien, tranh truong hop xoa nham file cua nhau
+
+## Giai phap
+
+| Thanh phan | Vai tro |
+|------|------|
+| **File Browser** | Giao dien web quan ly file: upload, download, tao thu muc, phan quyen |
+| **Node-RED** | Cau noi trung gian, goi API File Browser tra ve danh sach file |
+| **Nginx** | Dieu phoi traffic: phuc vu web tinh + proxy /api + proxy /files tren cung 1 domain |
+| **Cloudflare Tunnel** | Public ra internet, HTTPS tu dong, khong can mo port |
+
+## Luong hoat dong
+Thanh vien nhom
+|
+v
+Upload file --> [File Browser] (luongquangha.io.vn/files)
+|
+v luu vao /srv tren Ubuntu Server
+|
+[Node-RED] goi API File Browser
+|
+v tra ve JSON danh sach file
+[Nginx] proxy /api/files-list
+|
+v
+Trang web chinh (luongquangha.io.vn)
+hien thi danh sach file tu dong
+
+---
 ---
 
 # 1. Thêm File Browser vào docker-compose.yml
@@ -132,49 +166,6 @@ Người dùng tự đăng ký tại `https://luongquangha.io.vn/files`
 
 ---
 
-# 10. Hướng dẫn sử dụng File Browser
-
-## 10.1. Upload file
-Nhấn nút **Upload** (mũi tên lên) ở góc trên phải → chọn file từ máy tính → file sẽ được upload lên server.
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/50eefb68-b6df-4b95-8516-eadab1773311" />
-
-
-## 10.2. Tạo thư mục mới
-Nhấn **Thư mục mới** ở menu bên trái → nhập tên thư mục → nhấn OK.
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/942f13fb-7f5f-4184-b7fe-11ef8a1576b0" />
-
-
-## 10.3. Tạo file mới
-Nhấn **Tập tin mới** ở menu bên trái → nhập tên file → nhấn OK → có thể chỉnh sửa nội dung trực tiếp.
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/90d06c93-3ece-4b13-9b2b-1a64000b6083" />
-
-<img width="1918" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce6f5455-080d-4246-8684-4aa627029d24" />
-
-<img width="1920" height="1077" alt="image" src="https://github.com/user-attachments/assets/9987fbbc-2b1f-4b85-9a02-b6d45be7e734" />
-
-
-## 10.4. Download file
-Click vào file cần tải → nhấn nút **Download** (mũi tên xuống) ở góc trên phải.
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1a4a2128-c12d-4b9f-8bc6-8d21224e484d" />
-
-## 10.5. Xóa file
-Click vào file cần xóa → nhấn nút **Xóa** (thùng rác) → xác nhận.
-
-<img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/8aa8e682-f6fc-4418-b396-5af12d54f27a" />
-
-
-## 10.6. Chia sẻ file
-Click vào file → nhấn nút **Chia sẻ** → copy link chia sẻ để gửi cho người khác.
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6da10b88-2d27-4afd-8beb-2d6e623ad719" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d8aa8b18-43ca-454e-bea2-80f552f88ebc" />
-
-
----
 
 # 11. Node-RED kết nối File Browser API
 
@@ -218,10 +209,76 @@ File Browser ho tro phan quyen chi tiet cho tung user:
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2782d6fb-70c0-42a6-8836-98c0a73e8ce7" />
 
+---
 
-# Cấu trúc thư mục
+# 14. Ket qua tong the
 
-```
+## Luong hoat dong hoan chinh
+
+Khi thanh vien nhom upload file moi len File Browser:
+1. File duoc luu vao thu muc `/srv` tren Ubuntu Server
+2. Thanh vien khac vao `luongquangha.io.vn` nhan **Lam moi**
+3. Trang web goi `/api/files-list` → Node-RED nhan request
+4. Node-RED goi API File Browser voi token xac thuc
+5. File Browser tra ve JSON danh sach file
+6. Trang web hien thi bang danh sach cap nhat
+
+## Cac duong dan truy cap
+
+| Duong dan | Chuc nang |
+|------|------|
+| `luongquangha.io.vn` | Trang web hien thi danh sach file |
+| `luongquangha.io.vn/files` | File Browser quan ly file |
+| `luongquangha.io.vn/api/files-list` | API danh sach file (JSON) |
+| `luongquangha.io.vn/api` | Node-RED API goc |
+
+---
+
+# 15. Hướng dẫn sử dụng File Browser
+
+## 15.1. Upload file
+Nhấn nút **Upload** (mũi tên lên) ở góc trên phải → chọn file từ máy tính → file sẽ được upload lên server.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/50eefb68-b6df-4b95-8516-eadab1773311" />
+
+
+## 15.2. Tạo thư mục mới
+Nhấn **Thư mục mới** ở menu bên trái → nhập tên thư mục → nhấn OK.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/942f13fb-7f5f-4184-b7fe-11ef8a1576b0" />
+
+
+## 15.3. Tạo file mới
+Nhấn **Tập tin mới** ở menu bên trái → nhập tên file → nhấn OK → có thể chỉnh sửa nội dung trực tiếp.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/90d06c93-3ece-4b13-9b2b-1a64000b6083" />
+
+<img width="1918" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce6f5455-080d-4246-8684-4aa627029d24" />
+
+<img width="1920" height="1077" alt="image" src="https://github.com/user-attachments/assets/9987fbbc-2b1f-4b85-9a02-b6d45be7e734" />
+
+
+## 15.4. Download file
+Click vào file cần tải → nhấn nút **Download** (mũi tên xuống) ở góc trên phải.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1a4a2128-c12d-4b9f-8bc6-8d21224e484d" />
+
+## 15.5. Xóa file
+Click vào file cần xóa → nhấn nút **Xóa** (thùng rác) → xác nhận.
+
+<img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/8aa8e682-f6fc-4418-b396-5af12d54f27a" />
+
+
+## 15.6. Chia sẻ file
+Click vào file → nhấn nút **Chia sẻ** → copy link chia sẻ để gửi cho người khác.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6da10b88-2d27-4afd-8beb-2d6e623ad719" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d8aa8b18-43ca-454e-bea2-80f552f88ebc" />
+
+
+---
+
+# Cau truc thu muc
 myapp/
 ├── docker-compose.yml
 ├── nginx/
@@ -231,6 +288,13 @@ myapp/
 ├── nodered/
 │   └── settings.js
 └── filebrowser/
-    ├── data/
-    └── filebrowser.db
-```
+├── data/          ← noi luu file upload cua nguoi dung
+└── filebrowser.db ← database chua tai khoan va cai dat
+
+Giai thich:
+- `docker-compose.yml` — khai bao 4 service: mynginx, mynodered, mycloudflared, myfilebrowser
+- `nginx/nginx.conf` — cau hinh proxy: `/` → web tinh, `/api` → Node-RED, `/files` → File Browser
+- `myweb/index.html` — trang web hien thi danh sach file, goi API tu Node-RED
+- `nodered/settings.js` — cau hinh Node-RED, bat buoc dang nhap
+- `filebrowser/data/` — thu muc luu tru file cua nguoi dung tren server
+- `filebrowser/filebrowser.db` — database chua tai khoan, quyen han, cai dat
